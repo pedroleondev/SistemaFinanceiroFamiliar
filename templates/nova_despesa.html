@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Despesa</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+    <div class="container">
+        <h1>Nova Despesa</h1>
+        <input id="desc" placeholder="Descrição">
+        <input id="amount" type="number" placeholder="Valor">
+        <input id="date" type="date">
+        <input id="category" placeholder="Categoria">
+        <button onclick="addTransaction()">Adicionar Despesa</button>
+    </div>
+
+    <script>
+        async function addTransaction() {
+            let descricao = document.getElementById('desc').value;
+            let valor = document.getElementById('amount').value;
+            let data = document.getElementById('date').value;
+            let categoria = document.getElementById('category').value;
+    
+            if (!descricao || !valor || !data || !categoria) {
+                alert("Preencha todos os campos!");
+                return;
+            }
+    
+            let response = await fetch('/transaction', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    description: descricao,
+                    amount: -Math.abs(parseFloat(valor)), // Valor negativo para despesa
+                    date: data,
+                    category: categoria,
+                    type: "Despesa" // Novo campo
+                })
+            });
+    
+            let result = await response.json();
+            alert(result.message);
+            window.location.href = "/lancamentos"; // Redireciona para lançamentos após adicionar
+        }
+    </script>
+    
+    
+
+</body>
+</html>

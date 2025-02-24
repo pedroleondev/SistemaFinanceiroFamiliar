@@ -1,0 +1,7 @@
+Flask
+Flask-SQLAlchemy
+Flask-RESTful
+pandas
+matplotlib
+reportlab
+Flask-Cors

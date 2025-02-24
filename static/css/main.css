@@ -1,0 +1,139 @@
+/* ============================ */
+/* 🔹 ESTILOS GERAIS */
+/* ============================ */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================ */
+/* 🔹 BOTÕES */
+/* ============================ */
+button {
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* ============================ */
+/* 🔹 NAVBAR */
+/* ============================ */
+.navbar {
+    background: #4CAF50;
+    padding: 15px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 0 20px;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* ============================ */
+/* 🔹 TABELAS */
+/* ============================ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: left;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Cabeçalho da tabela */
+th {
+    background: #4CAF50;
+    color: white;
+}
+
+/* ============================ */
+/* 🔹 ESTILOS PARA RECEITAS E DESPESAS */
+/* ============================ */
+
+/* Receita (positivo) */
+.income {
+    background: #e8f5e9; /* Verde claro */
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+/* Despesa (negativo) */
+.expense {
+    background: #ffebee; /* Vermelho claro */
+    color: #c62828;
+    font-weight: bold;
+}
+
+/* Ajuste para a nova coluna "Tipo" */
+.income span {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.expense span {
+    color: #c62828;
+    font-weight: bold;
+}
+
+
+/* ============================ */
+/* 🔹 AJUSTE DE ÍCONES NA TABELA */
+/* ============================ */
+
+/* Efeito hover nas linhas */
+tr:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Ajustando ícones e espaçamento */
+td:first-child {
+    font-weight: bold;
+}
+
+td:nth-child(2) {
+    display: flex;
+    align-items: center;
+}
+
+td:nth-child(2) img {
+    width: 20px;
+    margin-right: 8px;
+}

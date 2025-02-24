@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lançamentos</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+    <div class="container">
+        <h1>Lançamentos</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Categoria</th>
+                    <th>Tipo</th>  <!-- Nova coluna -->
+                </tr>
+            </thead>
+            <tbody id="transactions"></tbody>
+        </table>
+    </div>
+
+    <script>
+        async function loadTransactions() {
+            let response = await fetch('/transactions'); // Busca os lançamentos na API
+            let transactions = await response.json();
+    
+            let tableBody = document.getElementById('transactions');
+            tableBody.innerHTML = ''; // Limpa a tabela antes de atualizar
+    
+            transactions.forEach(t => {
+                let isExpense = t.amount < 0;
+                let typeClass = isExpense ? 'expense' : 'income'; // Define classe de estilo
+                let typeLabel = isExpense ? 'Despesa' : 'Receita'; // Define o nome
+                let icon = isExpense ? '💸' : '💰'; // Ícone diferente para cada tipo
+                let amountFormatted = isExpense ? `- R$ ${Math.abs(t.amount).toFixed(2)}` : `R$ ${t.amount.toFixed(2)}`; // Apenas exibe o "-" sem alterar o backend
+
+                let row = `<tr class="${typeClass}">
+                    <td>${t.date}</td>
+                    <td>${icon} ${t.description}</td>
+                    <td>${amountFormatted}</td>
+                    <td>${t.category}</td>
+                    <td><span class="${typeClass}">${typeLabel}</span></td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+        }
+    
+        loadTransactions(); // Carrega os lançamentos ao abrir a página
+    </script>
+
+</body>
+</html>
